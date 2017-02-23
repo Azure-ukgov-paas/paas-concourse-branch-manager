@@ -1,0 +1,19 @@
+---
+platform: linux
+
+image: docker:///tracker/busyboxplus#ruby-git
+
+inputs:
+- name: concourse-branch-manager
+- name: git-branches
+- name: template-repo
+- name: config-repo
+- name: credentials-repo
+
+params:
+  CONCOURSE_URL: null
+  CONCOURSE_USERNAME: null
+  CONCOURSE_PASSWORD: null
+
+run:
+  path: concourse-branch-manager/tasks/manage_branches.rb
